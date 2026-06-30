@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ropa"
-version = "0.1.0"
+version = "0.1.1"
 description = "Memory-safe parallel runner for Robot Framework + Browser (Playwright) — a pabot alternative that never OOMs."
 readme = "README.md"
 requires-python = ">=3.10"

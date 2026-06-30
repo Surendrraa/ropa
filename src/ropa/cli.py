@@ -93,6 +93,7 @@ def main(argv: list[str] | None = None) -> int:
     final: dict[str, object] = {}
     attempt_files: list[list[Path]] = []
     pending = file_list
+    ever_failed: set[str] = set()  # tests that failed in any attempt
     attempt = 1
     max_attempts = args.retry + 1
     while pending and attempt <= max_attempts:
@@ -106,8 +107,14 @@ def main(argv: list[str] | None = None) -> int:
             ram_stats.record(src, mb)
         for res in results:
             res.attempts = attempt
-            res.flaky = res.status == "PASS" and attempt > 1
-            final[res.unit.longname] = res
+            name = res.unit.longname
+            if res.status != "PASS":
+                ever_failed.add(name)
+            # Flaky = it failed in some earlier attempt and now passes. (A test
+            # whose FILE was retried for a sibling, but which itself never
+            # failed, is NOT flaky.)
+            res.flaky = res.status == "PASS" and name in ever_failed
+            final[name] = res
         attempt_files.append(sorted({r.output_xml for r in results}))
         failed_sources = {r.unit.source for r in final.values()
                           if r.status != "PASS"}

@@ -20,7 +20,7 @@ In `requirements.txt`, replace the pabot line with ropa:
   robotframework==7.2.2
   robotframework-browser==20.0.0
 - robotframework-pabot==5.2.2
-+ ropa @ git+https://github.com/Surendrraa/ropa.git@v0.1.0
++ ropa @ git+https://github.com/Surendrraa/ropa.git@v0.1.1
 ```
 
 Then the usual:

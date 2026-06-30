@@ -3,4 +3,4 @@
 See docs/problem.md for the design rationale.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"

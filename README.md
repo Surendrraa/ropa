@@ -33,7 +33,7 @@ pip install --user "git+https://github.com/Surendrraa/ropa.git"
 Verify:
 
 ```bash
-ropa --version      # ropa 0.1.0
+ropa --version      # ropa 0.1.1
 ropa --help
 ```
 
