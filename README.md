@@ -6,15 +6,28 @@ parallel as the RAM allows, queue the rest, **never OOM**.
 
 ## Install
 
-`ropa` installs once on your machine and works in **every** Robot Framework
-project — like `pabot`. No per-project setup.
+`ropa` runs `robot` for you, so it must live in the **same environment as your
+Robot Framework + Browser library** (just like `pabot`). Install it next to your
+test dependencies — **do not** `pipx`-isolate it (an isolated venv won't have your
+Browser library or project libraries, so your tests would fail to import them).
+
+**Recommended — a project virtual environment (zero risk to system packages):**
 
 ```bash
-# recommended: isolated CLI install (needs pipx; cross-platform)
-pipx install "git+https://github.com/Surendrraa/ropa.git"
+python -m venv .venv
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
+pip install robotframework robotframework-browser
+rfbrowser init                     # installs the Playwright browsers
+pip install "git+https://github.com/Surendrraa/ropa.git"
+```
 
-# or plain pip (user install)
+**Or into your existing user environment** (where `robotframework` already is):
+
+```bash
 pip install --user "git+https://github.com/Surendrraa/ropa.git"
+# If your OS Python is "externally managed" (PEP 668) and you are NOT in a venv,
+# pip refuses with a warning. Prefer a venv (above) — it avoids this entirely.
+# Only as a last resort add: --break-system-packages
 ```
 
 Verify:
@@ -24,15 +37,8 @@ ropa --version      # ropa 0.1.0
 ropa --help
 ```
 
-Upgrade later:
-
-```bash
-pipx upgrade ropa            # if installed with pipx
-pip install --user -U "git+https://github.com/Surendrraa/ropa.git"   # if pip
-```
-
-Requires Python ≥ 3.10. Browser tests also need `robotframework-browser`
-(`pip install robotframework-browser && rfbrowser init`) in your project.
+Requires Python ≥ 3.10. A virtual environment never touches system packages, so
+it is the safe and recommended path.
 
 ## Run
 
