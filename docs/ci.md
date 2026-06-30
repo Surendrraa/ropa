@@ -6,6 +6,12 @@ difference — and the reason to use it in CI — is the **`--max-ram` budget**:
 runners have fixed RAM, and ropa admits files only while they fit, so a
 browser-heavy parallel run **can't OOM the runner**.
 
+**No xvfb / no display needed — exactly like pabot.** ropa never launches a
+browser itself; it only runs `robot`. Headless is decided by your suites
+(`New Browser ... headless=True`, or your config), so Playwright Chromium runs
+headless natively in CI with no `xvfb-run` and no `DISPLAY`. (Verified on a real
+Browser/Playwright suite.)
+
 ## 1. Install (same slot as `robotframework-pabot`)
 
 In `requirements.txt`, replace the pabot line with ropa:
