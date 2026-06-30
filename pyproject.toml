@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ropa"
+version = "0.1.0"
+description = "Memory-safe parallel runner for Robot Framework + Browser (Playwright) — a pabot alternative that never OOMs."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Surendrraa" }]
+keywords = ["robotframework", "playwright", "parallel", "pabot", "testing"]
+dependencies = [
+    "robotframework>=6.0",
+    "psutil>=5.9",
+]
+
+[project.optional-dependencies]
+browser = ["robotframework-browser>=18"]
+
+[project.urls]
+Homepage = "https://github.com/Surendrraa/ropa"
+Repository = "https://github.com/Surendrraa/ropa"
+
+[project.scripts]
+ropa = "ropa.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

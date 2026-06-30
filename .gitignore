@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+.ropa/
+ropa_results/
+.pabotsuitenames
+*.xml
+!examples/**/*.robot
+.venv/
