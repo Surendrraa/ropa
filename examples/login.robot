@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Sample suite to exercise ropayr (no browser needed).
+Documentation    Sample suite to exercise ropa (no browser needed).
 
 *** Test Cases ***
 Fast Check

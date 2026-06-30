@@ -1,10 +1,10 @@
 *** Settings ***
 Documentation    A deterministically flaky test: fails the first attempt,
-...              passes on retry. Demonstrates ropayr --retry + flaky detection.
+...              passes on retry. Demonstrates ropa --retry + flaky detection.
 Library          OperatingSystem
 
 *** Variables ***
-${FLAG}    %{TMPDIR=/tmp}/ropayr_flaky.flag
+${FLAG}    %{TMPDIR=/tmp}/ropa_flaky.flag
 
 *** Test Cases ***
 Sometimes Fails

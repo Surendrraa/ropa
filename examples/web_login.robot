@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Browser suite — unmodified New Browser/New Context/New Page.
-...              Under `ropayr --browser chromium` these attach to the SHARED
+...              Under `ropa --browser chromium` these attach to the SHARED
 ...              browser, each test in its own isolated context.
 Library          Browser
 
