@@ -53,6 +53,18 @@ ropa -p 8 --max-ram 12G -i smoke tests/         # only the 'smoke' tag
 Outputs standard `output.xml` + `log.html` + `report.html` in `ropa_results/`.
 Per-project learning lives in `.ropa/` (add it to your project's `.gitignore`).
 
+## CI/CD (drop-in for pabot)
+
+Same slot as `robotframework-pabot`, one-line command swap, exits non-zero on
+failures. Set `--max-ram` to the runner's RAM minus ~1 GB so it can't OOM:
+
+```diff
+- pabot --processes 4           --outputdir reports tests
++ ropa  -p 4   --max-ram 7G     --outputdir reports tests   # 8 GB runner
+```
+
+Full Bitbucket Pipelines + GitHub Actions examples: **[docs/ci.md](docs/ci.md)**.
+
 ## The model
 
 - A **`.robot` file is the atomic unit.** Its tests run sequentially (case 2 may
